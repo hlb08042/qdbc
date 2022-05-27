@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*2.    编写一个 getUrlParam 函数，用于获取 url中的参数，要求：
+                    a. 指定参数名称，返回该参数的值 或者 空字符串
+                    b. 不指定参数名称，返回全部的参数对象 或者 {}
+                    c. 如果存在多个同名参数，则返回数组
+                    d. 不能使用 URLSearchParams
+        */
+        function getUrlParam(sUrl, sKey) {
+            var result = {};
+            // replace()方法的参数replacement可以是函数。此时，每个匹配都调用该函数，它返回的字符串将作为替换文本使用。
+            // 该函数的第一个参数是匹配模式的字符串，接下来的参数是与模式中的子表达式匹配的字符串，可以有0个或多个。
+            // 再接下来的参数是一个整数，声明了匹配在stringObject中出现的位置，最后一个参数是stringObject本身
+            sUrl.replace(/\??(\w+)=(\w+)&?/g, function (a, k, v) {
+                // console.log(a);
+                // console.log(k);
+                // console.log(v);
+                // void 0 === undefined, void 0比undefined占用的字节少，多用在压缩文件上
+                if (result[k] !== void 0) {
+                    var t = result[k];
+                    result[k] = [].concat(t, v);
+                } else {
+                    result[k] = v;
+                }
+            });
+            if (sKey === void 0) {
+                return result;
+            } else {
+                return result[sKey] || '';
+            }
+        }
+        console.log(getUrlParam("http://www.baidu.com/#/?t1=1&t3=2&t5=3"));
+        let result = getUrlParam("http://www.baidu.com?key=1&key=2&key=3&test=4&tt=5&test=2 ")
+        console.log(result)
+    </script>
+</body>
+
+</html>

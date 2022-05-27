@@ -1,0 +1,103 @@
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+.meizu-header {
+  display: flex;
+  justify-content: center;
+}
+.meizu-header .meizu-header-container {
+  height: 82px;
+  display: flex;
+}
+.meizu-header .meizu-header-container .meizu-header-logo {
+  height: 82px;
+  width: 125px;
+  display: flex;
+  align-items: center;
+  margin-right: 60px;
+}
+.meizu-header .meizu-header-container .meizu-header-logo img {
+  width: 125px;
+}
+.meizu-header .meizu-header-container .meizu-header-link {
+  display: flex;
+  width: 788px;
+  height: 82px;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: 10px;
+}
+.meizu-header .meizu-header-container .meizu-header-link .meizu-header-link-product {
+  color: white;
+  font-size: 14px;
+}
+.meizu-header .meizu-header-container .meizu-header-search {
+  width: 170px;
+  height: 100%;
+  display: flex ;
+  align-items: center;
+}
+.meizu-header .meizu-header-container .meizu-header-search input {
+  height: 28px;
+  border-radius: 20px;
+  border: 0;
+  font-size: 12px;
+  padding-left: 15px;
+  line-height: 28px;
+  background: url(/images/search.png) no-repeat;
+  background-size: 16px;
+  background-position: 145px 7.5px;
+  background-color: white;
+  outline: none;
+}
+.meizu-header .meizu-header-container .meizu-header-user {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+.meizu-header .meizu-header-container .meizu-header-user svg {
+  width: 26px;
+  height: 26px;
+  color: white;
+}
+.meizu-header .meizu-header-container .meizu-header-cart {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+.meizu-header .meizu-header-container .meizu-header-cart svg {
+  width: 26px;
+  height: 26px;
+  color: white;
+}
+.meizu-header .meizu-header-container .meizu-header-cart .point {
+  border-radius: 50px;
+  background-color: red;
+  color: white;
+  height: 14px;
+  width: 14px;
+  font-size: 8px;
+  text-align: center;
+  line-height: 14px;
+  position: absolute;
+  top: 25px;
+  right: 130px;
+}
+.mz-index-banner {
+  background-color: #bfa;
+  width: 100%;
+  height: 670px;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+.mz-index-banner img {
+  height: 670px;
+  position: absolute;
+  left: -30%;
+  top: 0;
+}

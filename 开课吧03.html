@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let name = "hlb"
+        // console.log(`欢迎${name}`)
+        // let sex = 1
+        // console.log(`性别${sex?"男":"女"}`)
+
+        // let price = 20 
+        // let count = 6
+        // console.log(`小计${price*count}`)
+
+        // console.log(a) //Cannot access 'a' before initialization
+        // // let a = 10 
+        // console.log(a) 
+
+        // setTimeout(() => {
+        //     console.log(1)
+        // }, timeout);
+
+
+
+        // console.log(a) 
+        // (function(){
+        //     var a = 10 //初始化并赋值
+        //     console.log(a)
+        // })()
+
+        // var a = 10 
+        // console.log(window.a) //10
+
+        // let b = 10 
+        // console.log(window.b) //undefined
+
+
+
+        // 块级作用域题目
+        // {
+        //     function f(){
+        //         "a"
+        //     }
+        //     f = 1 
+        //     f = 2
+        //     function f(){
+        //         "b"
+        //     }
+        //     f = 3
+        // }
+        // console.log("f =",f)
+
+        /*
+                // 块级作用域题目
+                {
+                    let f=()=>{
+                        "a"
+                    }
+                    f = 1 
+                    f = 2
+                    f=()=>{
+                        "b"
+                    }
+                    f = 3
+                }
+                console.log("f =",f) //报错
+        
+        */
+/*
+        // 遍历数字下标的数组或类数组对象
+        // 点名
+        let arr = ["A", "B", "C"]
+        for (let i = 0; i < arr.length; i++) {
+            console.log(`${arr[i]}到了`)
+        }
+
+        // 定义函数计算任意多个数的和
+        function add() {
+            let result = 0
+            for (let i = 0; i < arguments.length; i++) {
+                result = result + arguments[i]
+            }
+            console.log(result)
+            return result
+        }
+        add(1, 2, 3)
+
+
+        // forEach
+        arr.forEach(function (name) {
+            console.log(`${name}到了`)
+        })
+
+        arr.forEach(name => {
+            console.log(`${name}到了`)
+        });
+
+
+        // for of 
+        for (let name of arr) {
+            console.log(`${name}到了`)
+        }
+
+        function add1(){
+            let result = 0 
+            for(let n of arguments){
+                result = result + n 
+            }
+            console.log(result)
+            return result
+        }
+
+        add1(1,2)           //3
+        add1(1,2,5,6,98)    //112
+
+        // 计算员工总工资
+        function money(name,...arr){
+            console.log(arr)
+            let total = 0
+            for(let i=0; i<=arr.length-1; i++){
+                total = total + arr[i]
+            }
+            console.log(`${name}的总工资是${total}`)
+        }
+        money("吴兆楠",20,100,0.5)
+
+*/
+
+        // ...提供的语法糖
+        // 1.复制一个数组
+        // let arr1 = [1,2,3]
+        // let arr2 = [...arr1]
+        // console.log(arr2)//(3) [1, 2, 3]
+        // 2.合并多个数组或元素
+        // let arr1 = [1,2,3]
+        // let arr2 = [5,6,7]
+        // let arr3 = [...arr1,4,...arr2,8]
+        // console.log(arr3)//(8) [1, 2, 3, 4, 5, 6, 7, 8]
+        // 3.克隆一个对象
+        // let student = {name:"hlb",age:"21"}
+        // let student2 = {...student}
+        // console.log(student2)//{name: 'hlb', age: '21'}
+        // 4.合并多个对象和属性
+        // let obj1 = {x:1,y:2}
+        // let obj2 = {i:4,j:5}
+        // let obj3 = {...obj1,z:3,...obj2}
+        // console.log(obj3)//{x: 1, y: 2, z: 3, i: 4, j: 5}
+
+
+
+        // 数组解构
+        let arr = [2021,6,7,9,33]
+        let [,m,d] = arr
+        console.log(`${m}月${d}日`)//6月7日
+
+        // 对象解构
+        let student = {name:"hlb",age:"21"}
+        console.log(name,age)//报错
+        let {name:name,age:age} = student
+        console.log(name,age) //hlb 21
+
+    </script>
+</body>
+
+</html>

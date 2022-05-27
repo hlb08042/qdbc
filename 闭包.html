@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function outerFun(){
+            let n = 10 
+            function innerFun(){
+                console.log(n)
+            }
+            return innerFun
+            // 不加括号，函数本身，加括号，函数返回值
+        }
+
+        let fun = outerFun() //把outerFun的返回值(innerFun)赋值给fun
+        fun() // 输出10
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // // 提取字符串中的url
+
+        // const str = '我想购买 https://market.m.taobao.com/app/tb-source-app/aiguangjiepc/content/index.html?spm=a21bo.jianhua.201870.2 里面的产品'
+        // // 定义正则表达式
+        // const reg = /(https?:\/\/)([\w\.\-_\/\?\=])+/
+        // // 检索字符串中与正则表达式匹配的结果，返回一个数组
+        // result = str.match(reg)[0]
+        // console.log(result)
+
+
+        
+        const str = '我看了这个up主的视频https://space.bilibili.com/37784969?spm_id_from=444.41.0.0，然后我想购买 https://market.m.taobao.com/app/tb-source-app/aiguangjiepc/content/index.html?spm=a21bo.jianhua.201870.2 里面的产品'
+        const reg = /(https?:\/\/)([\w\.\-_\/\?\=])+(?=taobao)([\w\.\-_\/\?\=])+/
+        result = str.match(reg)[0]
+        console.log(result)
+
+
+    </script>
+</body>
+
+</html>

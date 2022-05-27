@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+                var lilei = {
+                    sname:"LILEI",
+                    intr:function(){
+                        console.log(`我是${this.sname}`)
+                    }
+                }
+                lilei.intr()
+                // 为什么必须加this？
+                // lilei不是作用域，所以它拦不住this
+                // this会穿透lilei，指向外部的作用域window
+                // 能不能换成箭头函数，不能
+        
+                if(false){
+                    var a = 10 
+                }
+                console.log(a)
+                // 不报错，输出undefined
+        */
+
+        // 题1
+        var a = 10
+        function fun() {
+            var a = 100
+            a++
+            console.log(a)
+        }
+        fun()//101
+        console.log(a)//101× => 10
+
+
+
+        // 题2
+        var a = 10
+        function fun() {
+            a = 100
+            a++
+            console.log(a)
+        }
+        fun()//101
+        console.log(a)//101
+
+
+        // 题3
+        var a = 10
+        function fun(a) {
+            a++
+            console.log(a)
+        }
+        fun(a)//11
+        console.log(a)//10
+
+
+        var obj = {
+            name: "hlb",
+            age: 18
+        }
+        console.log(obj["name"])
+
+        // 需求 : 定义一个函数帮小孩儿管理压岁钱
+        var total = 1000
+        function pay(money) {
+            total -= money
+            console.log(`花了${money}，还剩${total}`)
+        }
+        pay(100)//花了100，还剩900
+        pay(200)//花了200，还剩700
+
+
+
+        // 需求 : 定义一个函数帮小孩儿管理压岁钱
+        function pay(money) {
+            var total = 1000
+            total -= money
+            console.log(`花了${money}，还剩${total}`)
+        }
+        pay(100)//花了100，还剩900
+        pay(100)//花了100，还剩900 
+
+
+
+        // 闭包笔试题1
+        function fun(){  //妈妈
+            var i = 999  //红包
+            nAdd = function(){  //第一个孩子（剖腹产）
+                i++
+            }
+            return function(){  //第二个孩子（顺产）
+                console.log(i)
+            }
+        }//妈妈生了两个孩子，两个孩子共用一个红包
+
+        var getN = fun()
+
+        getN() //?999 此时nAdd中创建了一个i，i++后为1000，但外层i不变
+        nAdd() // 单独在外部调用内层函数，使外层i+1，外层变1000
+        getN() //?1000
+
+
+        // 题2
+        function mother(){  //妈妈
+            var i = 0     //红包
+            return function(){ //孩子
+                i++
+                console.log(i)
+            }
+        }
+        var get1 = mother() //妈妈生第一个孩子，给了一个红包
+        get1() //1
+        var get2 = mother() //妈妈生第二个孩子，又给一个红包
+        get2() //1
+
+        get1() //2
+        get2() //2
+
+        //两个孩子各自有一个红包，不是同一个
+
+
+
+        // 题3
+        function fun(){//妈妈
+            arr = [] //arr是在给未声明的变量强行赋值，自动在全局创建该变量
+            for(var i=0 /*红包*/; i<3 ; i++){
+                arr[i] = function(){ //反复创建了三个孩子（剖腹产）
+                    console.log(i)
+                }
+            }
+            // for循环结束后，i=3
+        }
+        fun()
+
+        arr[0]()//? 3
+        arr[1]()//? 3
+        arr[2]()//? 3
+
+        // 妈妈一次性生了三个孩子，共用一个红包，红包里有三块钱
+        // 三个兄弟输出结果一样
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

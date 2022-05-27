@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 题目：实现一个Queue类，支持按顺序执行异步队列，push方法把一个待执行函数推入队列，run函数开始运行队列。
+        Queue.push(function () {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log('1')
+                    resolve()
+                }, 1000)
+            })
+        }).push(function () {
+            console.log('2');
+        }).push(function () {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log('3')
+                    resolve()
+                }, 500)
+            })
+        }).run()
+
+// output：按顺序输出 1,2,3
+
+
+/*
+        编写一个 getUrlParam 函数，用于获取 url 中的参数，要求：
+
+        1. 指定参数名称，返回该参数的值 或者 空字符串
+        2. 不指定参数名称，返回全部的参数对象 或者 {}
+        3. 如果存在多个同名参数，则返回数组
+        4. 不能使用 URLSearchParams 
+*/
+
+        function getUrlParam(url,name){
+            if(name){
+                let result = url.match(name)
+                
+                return result.split("?") || ""
+
+                
+            }else{
+                let reg = /[A-Za-z\d]+?[A-Za-z\d]+/g
+                let result = url.match(reg)
+                return result.split("?") || {}
+            }
+        }
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

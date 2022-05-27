@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log(222)
+        // var reg = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g;
+        const regUrl = /((https?|ftp|file):\/\/)?([\da-z\.\-]+)\.([a-z\.]{2,6})([\/\w\.\-]*)*\/?$/
+        // const regUrl = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g;
+        // const myRegUrl =  /(https?:\/\/)?([a-zA-z\d\.\-_\/\?\=]*)/g
+        const myRegUrl =  /(https?:\/\/)?([\w\.\-_\/\?\=])+/g
+        const url = "我想购买 https://market.m.taobao.com/app/tb-source-app/aiguangjiepc/content/index.html?spm=a21bo.jianhua.201870.2 里面的产品"
+        resultUrl = url.match(myRegUrl)[0]
+        console.log(resultUrl)
+        console.log(1111)
+
+    //    /(https?:\/\/)?([\w\.\-_\/\?\=])+(?=taobao)([\w\.\-_\/\?\=])+/
+    </script>
+</body>
+
+</html>

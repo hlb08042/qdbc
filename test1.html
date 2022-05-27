@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            background-color: skyblue;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+
+            /* display: flex; */
+        }
+        .dad{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* width: 100%;
+            height: 1000px; */
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="dad">
+        <div class="box">
+        </div>
+    </div>
+
+</body>
+<script>
+    var box = document.querySelector(".box")
+    box.onclick = function(){
+        alert("111")
+    }
+    // 无论清浊都行舟、
+    // 
+</script>
+</html>

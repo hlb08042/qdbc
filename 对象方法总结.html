@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // // 复制一个新对象，并不会影响原对象
+
+        // let obj = {a:1}
+        // let copyObj = Object.assign({},obj)
+        // console.log(copyObj)    //{a: 1}
+
+
+        // // 合并对象属性，将源对象的所有可枚举属性复制到目标对象
+
+        // let obj1 = {a:1}
+        // let obj2 = {b:2}
+
+        // Object.assign(obj1,obj2)
+        // console.log(obj1) //{a: 1, b: 2}
+
+
+        // 如果目标对象和源对象中有相同的键，
+        // 则属性将被源对象的属性覆盖，后面的源属性会覆盖之前的相同键的源属性
+
+        // let obj1 = { a: 1 , b: 3 }
+        // let obj2 = { b: 2 }
+        // let obj3 = { a: 0 , d:4 }
+
+        // Object.assign(obj1,obj2,obj3)
+        // console.log(obj1) //{a: 0, b: 2, d: 4}
+
+
+        // 源对象某个属性的值是对象，那么目标对象拷贝得到的是这个对象的引用。
+
+        // let obj1 = {a:0,b:{c:0}}
+        // let obj2 = Object.assign({},obj1)
+
+        // console.log(obj2)   //{a:0,b:{c:0}}
+
+        // obj1.b.c = 1        //改变obj1中的对象，obj2中的也会改变
+
+        // console.log(obj2)   //{a:0,b:{c:1}}
+
+
+
+        // 给当前的对象添加新的属性
+
+        // let obj = {a:1}
+        // // 添加属性
+        // Object.assign(obj,{b:2})
+        // console.log(obj)        //{a: 1, b: 2}
+
+
+        // 
+
+        // let obj1 = {a:0,b:1,c:{d:2}}
+        // let obj2 = JSON.parse(JSON.stringify(obj1))
+        // console.log(obj2)   //{a:0,b:1,c:{d:2}}
+
+        // obj1.a = 1
+        // obj1.c.d = 3
+        // console.log(obj1)   //{a:1,b:1,c:{d:3}}
+        // console.log(obj2)   //{a:0,b:1,c:{d:2}}
+
+        /*
+                let obj1 = {a:1,b:2}
+                let obj2 = Object.entries(obj1)
+                // 键为正常字符时，返回的键的值为字符串
+                console.log(obj2)   // [ ['a':1],['b':2] ] 
+        
+                let obj3 = {0:1,1:2}
+                let obj4 = Object.entries(obj3)
+                // 当键值为数字时，返回的键的值也是字符串
+                console.log(obj4)   // [ ['0', 1],['1', 2] ]
+        
+                let obj5 = {5:"a",4:"b",6:"c"}
+                let obj6 = Object.entries(obj5)
+                // 当键值的数字错乱无序时，它会将其排序后返回
+                console.log(obj6)   //  [ ['4', 'b']['5', 'a']['6', 'c'] ]
+        
+                let obj = {
+                    name:"hlb",
+                    age:18
+                }
+                // 展开对象
+        
+                for(let [key,value] of Object.entries(obj)){
+                    console.log(`${key}:${value}`)
+                }
+        
+                // name:hlb
+                // age:18
+        
+                */
+
+
+        // let arr = [1,2,3]
+        // // 用于数组 => 返回索引值
+        // let result1 = Object.keys(arr)
+        // console.log(result1)    // ['0', '1', '2']
+
+        // let obj = {name:"hlb",age:18}
+        // // 用于对象 => 返回key值
+        // let result2 = Object.keys(obj)
+        // console.log(result2)    //['name', 'age']
+
+        // let objArr = {0:"1",1:"a",2:"8"}
+        // let result3 = Object.keys(objArr)
+        // console.log(result3)    //['0', '1', '2']
+
+        // let objArr1 = {10:"1",1:"a",2:"8"}
+        // let result4 = Object.keys(objArr1)
+        // console.log(result4)    //['1', '2', '10'](自动排序)
+
+        // let arr = [1,2,3]
+        // let result1 = Object.values(arr)
+        // console.log(result1)    // [1, 2, 3]
+
+        // let obj = {name:"hlb",age:18}
+        // let result2 = Object.values(obj)
+        // console.log(result2)    //['hlb', 18]
+
+        // let objArr = {0:"1",1:"a",2:"8"}
+        // let result3 = Object.values(objArr)
+        // console.log(result3)    //['1', 'a', '8']
+
+        // let objArr1 = {10:"1",1:"a",2:"8"}
+        // let result4 = Object.values(objArr1)
+        // console.log(result4)    //['a', '8', '1']，（以键排序
+
+
+        // let obj = {name:"hlb",age:18}
+        // let result = obj.hasOwnProperty("name")
+        // console.log(result)     //true
+
+
+        const obj1 = {
+            name: "toutiao",
+            age: 10,
+            profile: {
+                a: 1
+            }
+        }
+        const obj2 = {
+            name: "douyin",
+            age: 6,
+            profile: {
+                b: 1
+            }
+        }
+
+        function assign(object, obj1, obj2) {
+            let res = Object.assign({}, obj1.profile, obj2.profile)
+            let res1 = Object.assign({}, obj1, obj2)
+            res1.profile = res
+            return res1
+        }
+        let result = assign({}, obj1, obj2)
+        console.log(result)
+
+    </script>
+</body>
+
+</html>
+
+
+
+

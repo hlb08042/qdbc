@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+            .clickBox {
+            /* 样式 */
+            background-color: skyblue;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            /* cursor: pointer; */
+            /* 定位 */
+            position:absolute;  
+            left:50%;  
+            top:50%;  
+            margin:-100px 0 0 -100px 
+
+        }
+</style>
+
+<body>
+    <div class="clickBox"></div>
+    <script>
+        document.onclick = function (e) {
+            // 定义半径
+            var r = 100;
+            // 以当前浏览器窗口的宽高中点为圆心
+            var x1 = window.innerWidth / 2
+            var y1 = window.innerHeight / 2
+            // 鼠标相对于浏览器窗口可视区域的X，Y坐标（窗口坐标）
+            var x2 = e.clientX;
+            var y2 = e.clientY;
+            // Math.abs     返回一个数的绝对值
+            // Math.sqrt    返回一个数的平方根
+            // Math.pow     返回基数（base）的指数（exponent）次幂，即 base^exponent
+            var distance = Math.abs(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
+            if (distance <= r) {
+                alert("Yes!");
+            }
+            console.log("当前圆心坐标",x1,y1,"半径",r)
+            console.log("圆形范围","x",x1-r,x1+r,"y",y1-r,y1+r)
+            console.log("当前点击坐标",x2,y2)
+        }
+    </script>
+</body>
+
+</html>

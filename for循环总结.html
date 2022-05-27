@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // for for..in  for..of
+
+        const arr = [ 1, 2, 3, 4, 5 ]
+        const obj = { name: "hlb", age: 21, gender: "男" }
+
+        // for循环
+        // for(let i=0;i<arr.length;i++){
+        //     console.log(arr[i])
+        // }
+
+        // for(let i=0;i<obj.length;i++){
+        //     console.log(obj)
+        // }
+
+
+        // for in 
+        // for(let index in arr){
+        //     console.log(index)      // 0 1 2 3 4 
+        //     console.log(arr[index]) // 1 2 3 4 5 
+        // }
+
+
+        // for(let key in obj){ 
+        //     console.log(key)        // key
+        //     console.log(obj[key])   // value
+        // }
+
+        // for of 
+        // 对于数组，无需使用下标，可以直接输出元素值
+        // for(let value of arr){
+        //     console.log(value) //1 2 3 4 5 
+        // }
+
+        // for of 只针对可迭代对象，如array、set、map
+
+
+
+        arr.forEach((value)=>{
+            console.log(value)
+        })
+
+        
+    </script>
+</body>
+</html>

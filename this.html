@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box" style="height: 100px;width: 100px;background-color: skyblue;"></div>
+    <script>
+        /*
+        let obj = {
+            name: "hlb",
+            sayHi: function () {
+                console.log("hi")
+                console.log(this === obj)//true
+            }
+        }
+        // obj.sayHi()
+
+
+        // function fun1(){
+        //     console.log(this)//Window
+        // }
+        // fun1()
+
+        document.getElementById("box").onclick = function () {
+            console.log(this)       //div#box
+            let that = this
+            function callback() {
+                console.log(this)   //Window
+                console.log(that)   //div#box
+            }
+            callback()
+        }
+
+
+        let myFun = function () {
+            this.name = "myName1"
+            return {
+                name: "myName2"
+            }
+        }
+        let obj1 = new myFun()
+        // console.log(obj1.name)//myName2
+
+
+        var name = "windowsName";
+
+        function fn() {
+            var name = 'Cherry';
+            innerFunction();
+            function innerFunction() {
+                console.log(this.name);      // windowsName
+            }
+        }
+
+        // fn()
+
+
+        // console.log(this)
+        // const obj01 = {
+        //     fun() {
+        //         console.log(this)//{fun: ƒ}
+        //         fun2: () => {
+        //             console.log(this)//{fun: ƒ}
+        //         }
+        //     }
+        // }
+
+        
+        // obj01.fun()
+        // console.log((() => {console.log(this)})())
+*/
+
+        // const obj1 = {
+        //     name:'hlb',
+        //     getName(){
+        //         return this.name
+        //     }
+        // }
+
+        // const obj2 = {
+        //     name:"HLB"
+        // }   
+        // //正常调用
+        // console.log(obj1.getName())             //hlb
+        // // 通过call调用
+        // console.log(obj1.getName.call(obj2))    //HLB
+        // //（通过call改变this指向obj2，输出obj2的name）
+
+
+        // // 修改箭头函数的this？
+        // window.name = "window"
+        // const obj = {
+        //     name:"obj",
+        //     fun1: () => {
+        //         console.log(this.name)//window
+        //     },
+        //     fun2: function(){
+        //         console.log(this.name)//obj
+        //     }
+        // }
+        // // obj.fun1()
+        // // obj.fun2()
+        // const obj00 = {}
+        // console.log(obj.fun1.call(obj00))
+
+        // let name = "小王" ,age = 17
+        // let obj = {
+        //     name:"小张",
+        //     objAge : this.age
+        // }
+
+        // console.log(obj.objAge)
+
+
+        // let obj = {
+        //     name:"obj1",
+        //     fun1:function(a,b,c){
+        //         console.log(a+b+c,this)
+        //     }
+        // }
+
+        // let fun2 = obj.fun1;
+        // obj.fun1(1,2,3) //6,obj
+        // // 此时fun2的this指向window
+        // fun2(1,2,3)     //6,window
+        // // 通过call/apply调用函数，改变this，指向obj
+        // fun2.call(obj,1,2,3)    //6,obj
+        // fun2.apply(obj,[1,2,3]) //6,obj
+
+        // fun2.bind(obj,1,2,3)    //无输出
+        // fun2.bind(obj,1,2,3)()  //6,obj
+
+
+        let fun = ()=>{
+            console.log(this,"=>")
+        }
+
+        fun()//window
+
+        let obj = {
+            name:"obj1"
+        }
+
+        fun.call(obj)//还是window
+        fun.bind(obj)()//还是window
+
+        let fun2 = function(){
+            console.log(this,"普通")
+        }
+
+        fun2()//window
+        fun2.call(obj)//指向obj
+
+        // 箭头函数改this 不会报错
+        // 通过call调用，只当做普通调用
+
+
+
+    </script>
+</body>
+
+</html>

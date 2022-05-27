@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+            function fun(){
+                var str = "111"
+            }
+            fun()
+            console.log(str)
+            // str is not defined
+            // 函数内部的变量只能在函数内部使用
+        
+            if(true){
+                var str = "111"
+            }
+            console.log(str) //可以正常输出
+        
+            if(true){
+                let str = "111"
+            }
+            console.log(str) //str is not defined
+        */
+
+
+        // // ES5 没有块级作用域的概念
+        // function fun(){
+        //     //语句块
+        //     var srt1 = "var"
+        //     // let str2 = "let"
+
+        //     console.log(str1)
+        // }
+        // fun()
+        // // console.log(str2)
+
+
+        // 作用域链
+        let m = 20
+        {
+            let n = 10
+            let x = 30
+            {
+                let n = 50 
+                console.log(n) //50
+                console.log(x) //30
+                console.log(m) //20
+            }
+        } 
+        console.log(n)//n is not defined
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*       
+               // 去掉字符串中的空格
+               // 两个思路：①正则表达式 ； ②split  ; ③ trim？？
+               let str = ' abc   aa   s     '
+       
+               // 法一：正则 \s表示空格
+               const reg = /\s/g
+               let str1 = str.replace(reg,"")
+               console.log(str1)//abcaas
+               // 法二：
+               // 先用split以空格为分隔，转为数组，再用join以空字符串连接
+               let arr = str.split(" ")    //['', 'abc', '', '', 'aa', '', '', 's', '', '', '', '', '']
+               let str2 = arr.join("")     
+               console.log(str2)//abcaas
+       
+       
+               //去除字符串中最后一个指定的字符或者是字符串
+               //'abaaaaeaad' ，去除最后一次出现的"aa"
+               let str = "abaaaaeaad"
+               let removeStr = "aa"
+               // 获取最后一次出现的索引值
+               let index = str.lastIndexOf(removeStr)//7
+              
+               // 思路：在要去除的位置将字符串一分为二，然后只替换后半部分的指定字符，再拼接回去
+               let str1 = str.substr(0,index)
+               let str2 = str.substr(index)
+               // 拼回去
+               let result = str1 + str2.replace(removeStr,"")
+               console.log(result) //abaaaaed
+       
+       
+               // 写一个方法把下划线命名转换成大驼峰命名
+               // hello-world => HelloWorld
+               let name = "hello-world-hahah-iuiu"
+               // 分隔
+               let arr = name.split("-")   //['hello', 'world', 'hahah', 'iuiu']
+               // arr[n]分别对应每个单词
+               // 定义空数组以接收转换后的单词
+               let word = []
+               for(let n=0 ; n<arr.length; n++){
+                   // 使用slice将首字母与剩余字符分开
+                   word[n] = arr[n].slice(0,1).toUpperCase() + arr[n].slice(1).toLowerCase()
+               }
+               console.log(word)   //['Hello', 'World', 'Hahah', 'Iuiu']
+               // 数组转字符串
+               let newName = word.join("")
+               console.log(newName)    //HelloWorldHahahIuiu
+       
+       
+        // let str = '1！@#￥%23aSdFgH'
+        // function toCaseStr(str) {
+        //     let strArr = []
+        //     str.split('').forEach(i => {
+        //         if (i.charCodeAt() >= 65 && i.charCodeAt() <= 90) { //str.charCodeAt(index) 获取一个字符的unicode编码 65-90 是大写 97-122是小写
+        //             i = i.toLowerCase()
+        //         } else (
+        //             i = i.toUpperCase()
+        //         )
+        //         strArr.push(i)
+        //     })
+        //     return strArr.join('')
+        // }
+        // console.log(toCaseStr(str))
+
+        let str = "ABcD123efG"
+        // 判断每个字符
+        let arr = []
+        for(let i=0; i<str.length;i++){
+            if(str[i].charCodeAt()>=65&&str[i].charCodeAt()<=90){
+                arr[i] = str[i].toLowerCase()
+            }else{
+                arr[i] = str[i].toUpperCase()
+            }
+        }
+        let newStr = arr.join("")
+        console.log(newStr) //abCd123EFg
+
+
+     
+
+
+    //统计某一个字符或字符串在另一个字符串中出现的次数
+
+        // 只需统计一个字符的情况
+        let str1 = "abcaabaaee"
+        let str2 = "a"
+        let count = 0
+        for(let i=0 ; i<str1.length; i++){
+            if(str1[i] === str2){
+                count++
+            }
+        }
+        console.log(count)
+ 
+        function strCount(str,findStr){
+            let reg = new RegExp(findStr,"g")
+            let result = str.match(reg)
+            let count = result.length
+            console.log(count)
+        }
+
+        strCount("aabaacabaa","aa") //3
+
+
+        function getParams() {
+            let search = window.location.search //获取?后面的部分?name=xxx&id=xx
+            search = search.substring(1, search.length) //将?截取掉
+            let res = {}
+            search.split('&').forEach(item => {
+                let [key, value] = item.split('=')
+                res[key] = decodeURIComponent(value);
+            })
+            return res
+        }
+        getParams()
+ */
+
+        // 判断是否为回文字符串，返回布尔值
+        function isPalindrome(s) {
+            // 如果字符串长度为1，直接返回true
+            if (s.length == 1) return true
+            // 仅保留大小写字母及数字
+            let str = s.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() //因为可能有大写 统一转换为小写
+            console.log(str) //amanaplanacanalpanama
+            // split 以空字符串分隔成数组
+            // reverse 反转数组
+            // join 以空字符串连接数组元素为字符串
+            let reverseStr = str.split('').reverse().join('')
+            return str == reverseStr
+        }
+        // console.log(isPalindrome('A man, a plan, a canal: Panama'))
+
+
+        function getRandomCode(len) {
+            // 定义所有符合要求的字符至一个字符串
+            const allStr = 'azxcvbnmsdfghjklqwertyuiopZXCVBNMASDFGHJKLQWERTYUIOP0123456789.*&^%$#@!~';
+            // 初始化空验证码，通过循环累加
+            let code = '';
+            for (let index = 0; index < len; index++) {
+                // charAt：通过索引获取指定位置的字符
+                code += allStr.charAt(Math.floor(Math.random() * 73));
+            }
+            return code;
+        }
+        console.log(getRandomCode(5))
+
+
+
+        // 判断回文：转大/小写，转数组，反转数组，转字符串
+        function isHui(str) {
+            let str1 = str.toLowerCase()
+            let arr = str1.split('')
+            let strRev = arr.reverse().join("")
+            console.log(strRev)
+            return str1 == strRev
+        }
+
+        let result = isHui("Appa")
+        console.log(result)//true
+
+
+        // 生成指定长度的随机验证码
+        function randomCode(len){
+            let allStr = 'azxcvbnmsdfghjklqwertyuiopZXCVBNMASDFGHJKLQWERTYUIOP0123456789.*&^%$#@!~';
+            console.log(allStr.length)
+            let code = ''
+            for(let i=0; i<len ; i++){
+                // 生成随机数
+                // Math.floor()向下取整，Math.ceil()向上取整
+                let randomNum = Math.floor(Math.random()*73)
+                code +=  allStr.charAt(randomNum)
+            }
+            console.log(code)
+        }
+        randomCode(6)   //$sIm7U
+        // 注意随机数要在for循环内生成。。。。不然每次循环都会用的一样的随机数
+
+
+        // 写一个方法删除字符串中所有相邻重复的项
+        let str = "wwwzzndddsb" // => "wzndsb"
+
+        // 思路：变数组，一项项放，看要放进去的那一项是否与上一个被放进去的元素相同，否=>放
+        let arr = str.split("")
+        let newArr = []
+        for(let i=0; i<arr.length; i++){
+            if(newArr.length){
+                for(let j=0; j<newArr.length; j++){     // 好难过哦~
+                    if(newArr[j-1] != arr[i]){
+                        newArr.push(arr[i])
+                    }
+                }
+            }else{
+                newArr.push(arr[i])
+                // console.log(newArr)
+            }
+        }
+
+        // console.log(arr)
+        console.log(newArr)
+
+
+    </script>
+</body>
+
+</html>
