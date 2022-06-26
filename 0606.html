@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 初始化空数组
+        var arr = [];
+        for (var i = 1; i < 10000; i++) {
+            // 数值转字符串，方便反转
+            let str = i.toString()
+            // 反转数字：split以空字符串分隔为数组；reverse反转数组；join以空字符串连接数组
+            let tempArr = str.split('').reverse().join('')
+            if (str === tempArr) {
+                // 符合要求，放入数组
+                arr.push(i);
+            }
+        }
+
+        // console.log(arr)
+
+
+
+            let str = "aaaabbbccccddfgh";
+            let obj = {}
+            // 遍历字符串，把字符串中的每个字母和出现的次数推进对象
+            for (let i = 0; i < str.length; i++) {
+                if (obj[str[i]]) {
+                    obj[str[i]] += 1
+                } else {
+                    obj[str[i]] = 1
+                }
+            }
+
+            // console.log(obj)   //{a: 4, b: 3, c: 4, d: 2, f: 1, g: 1, h: 1}
+
+            // var array = []
+            // for (var i in obj) {
+            //     array.push(obj[i])
+            // } //只统计次数存入新数组
+            // var a = Math.max(...array) //找出次数最大的值
+            // var b;
+            // for (var i in obj) {
+            //     if (obj[i] == a) {
+            //         console.log(`最多次字符为${i}个数为${a}`);
+            //     }
+            // } //属性等于最大值的时候把属性和属性值都打印出来,有几个最大值就打印几次
+
+
+
+            // 深拷贝
+
+            let obj1 = {a:1,b:2,c:{d:0}}
+
+            let obj2 = JSON.parse(JSON.stringify(obj1))
+
+            console.log(obj2)//{a:1,b:2,c:{d:0}}
+
+            // 验证
+            obj1.a = 10
+            obj1.c = {d:10}
+
+            console.log(obj2)//{a:1,b:2,c:{d:0}}
+
+    </script>
+</body>
+
+</html>

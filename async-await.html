@@ -8,10 +8,16 @@
 </head>
 <body>
     <script>
-        console.log("script start")
-        console.log("script end")
+        async function fun1(){
+            console.log("async function start")
+            return 123
+        }
 
-        queueMicrotask()
+        const promise = fun1()
+        promise.then(res=>{
+            console.log("res:",res)
+        })
+
 
     </script>
 </body>
