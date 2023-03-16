@@ -1,26 +1,36 @@
 <template>
   <!-- 可视区域的容器（监听滚动事件） -->
-  <div ref="list" class="infinite-list-container" @scroll="scrollEvent($event)">
-    <!-- 容器内的占位（内联样式动态设置高度） -->
+  <div>
     <div
-      class="infinite-list-phantom"
-      :style="{ height: listHeight + 'px' }"
-    ></div>
-    <!-- 列表项的渲染区域（内联样式动态设置偏移量） -->
-    <div class="infinite-list" :style="{ transform: getTransform }">
-      <!-- 渲染区域内的每一列表项（v-for遍历真实显示列表数据（开始索引到结束索引的数据）） -->
-      <div
-        class="infinite-list-item"
-        ref="items"
-        v-for="item in visibleData"
-        :key="item.id"
-        :style="{ height: itemSize + 'px', lineHeight: itemSize + 'px' }"
-      >
-        {{ item.value }}
-      </div>
+      ref="list"
+      class="infinite-list-container"
+      @scroll="scrollEvent($event)"
+    >
+      <el-table :data="visibleData" style="width: 100%">
+        <!-- 容器内的占位（内联样式动态设置高度） -->
+        <div
+          class="infinite-list-phantom"
+          :style="{ height: listHeight + 'px' }"
+        >
+          <!-- 列表项的渲染区域（内联样式动态设置偏移量） -->
+          <div class="infinite-list" :style="{ transform: getTransform }">
+            <!-- 渲染区域内的每一列表项（v-for遍历真实显示列表数据（开始索引到结束索引的数据）） -->
+            <el-table-column
+              class="infinite-list-item"
+              prop="value"
+              label="日期"
+              width="180"
+              :style="{ height: itemSize + 'px', lineHeight: itemSize + 'px' }"
+            >
+            </el-table-column>
+          </div>
+        </div>
+      </el-table>
     </div>
   </div>
 </template>
+
+
 
 <script>
 export default {
@@ -76,6 +86,7 @@ export default {
   methods: {
     // 滚动事件
     scrollEvent() {
+      console.log(1);
       // 记录当前滚动位置
       let scrollTop = this.$refs.list.scrollTop;
       // 起始索引 = 当前滚动的位置 ÷ 列表每项高度

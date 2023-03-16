@@ -1,26 +1,27 @@
 <template>
   <div id="app">
     <virtualList :listData="listData" :itemSize="itemSize" v-if="false"  />
-    <ElVList :listData="listData" :itemSize="itemSize"   />
-    <!-- <ElTableList></ElTableList> -->
+    <ElVList :listData="listData" :itemSize="itemSize" v-if="false"  />
+    <ElTableList></ElTableList>
   </div>
 </template>
 
 <script>
 import virtualList from "./components/virtualList.vue";
 import ElVList from "./components/ElVList.vue";
-// import ElTableList from './components/ElTableList.vue'
+import ElTableList from './components/ElTableList.vue'
 
 let listData = [];
 for (let i = 0; i < 1000; i++) {
   listData.push({ id: i, value: `第${i}条数据` });
 }
+console.log('listData',listData)
 
 export default {
   name: "App",
   components: {
-    virtualList,ElVList
-    // ElTableList
+    virtualList,ElVList,
+    ElTableList
   },
   data() {
     return {
