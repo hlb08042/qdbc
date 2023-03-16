@@ -5,7 +5,7 @@ function bubbleSort(arr) {
     console.time("改进前")
     let length = arr.length
     let temp
-    for (let i = 0; i < length-1; i++) {
+    for (let i = 0; i < length - 1; i++) {
         for (let j = 0; j < length - 1 - i; j++) {  //j < length - 1 - i;
             if (arr[j] > arr[j + 1]) {
                 temp = arr[j]
@@ -42,27 +42,28 @@ function bubbleSort2(arr) {
 console.log(bubbleSort2(arr))
 
 
-function bubbleSort3(arr){
+function bubbleSort3(arr) {
     console.time("改进后3")
     // 定义两个变量
     let low = 0
-    let high = arr.length-1
-    let temp ,j 
-    while(low<high){
+    let high = arr.length - 1
+    let temp, j
+    while (low < high) {
         // 正向冒泡
-        for(j=low;j<high;j++){
-            if(arr[j]>arr[j+1]){
+        for (j = low; j < high; j++) {
+            if (arr[j] > arr[j + 1]) {
                 temp = arr[j]
-                arr[j]=arr[j+1]
-                arr[j+1] = temp
+                arr[j] = arr[j + 1]
+                arr[j + 1] = temp
             }
         }
         high--
-        for(j=high;j>low;j--){
-            if(arr[j]<arr[j-1]){
+        // 反向冒泡
+        for (j = high; j > low; j--) {
+            if (arr[j] < arr[j - 1]) {
                 temp = arr[j]
-                arr[j]=arr[j-1]
-                arr[j-1] = temp
+                arr[j] = arr[j - 1]
+                arr[j - 1] = temp
             }
         }
         low++
@@ -71,4 +72,4 @@ function bubbleSort3(arr){
     return arr
 }
 
-console.log(bubbleSort3(arr),"3")
+console.log(bubbleSort3(arr), "3")
