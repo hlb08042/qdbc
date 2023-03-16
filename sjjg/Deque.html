@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 创建双端队列Deque类
+    class Deque {
+        constructor() {
+            this.count = 0
+            this.lowestCount = 0
+            this.items = {}
+        }
+
+        // 从后端添加新元素 ==enqueue()
+        addBack(element) {
+            this.items[this.count] = element
+            this.count++
+        }
+
+        // 从前端移除第一个元素 ==dequeue()
+        removeFront() {
+            if (this.isEmpty()) {
+                return undefined
+            }
+            const result = this.items[this.lowestCount]
+            delete this.items[this.lowestCount]
+            this.lowestCount++
+            return result
+        }
+
+        // 从后端移除第一个元素 ==Stack-pop
+        removeBack() {
+            if (this.isEmpty()) {
+                return undefined
+            }
+            this.count--
+            //返回将被移除的元素
+            const result = this.items[this.count]
+            //移除元素
+            delete this.items[this.count]
+            return result
+        }
+
+        // 返回前端的第一个元素 ==Queue-peek
+        peekFront() {
+            if (this.isEmpty()) {
+                return undefined
+            }
+            return this.items[this.lowestCount]
+        }
+
+        // 返回后端的第一个元素 ==Stack-peek
+        peekBack() {
+            return this.items[this.items.length - 1]
+        }
+
+        // 检查队列是否为空
+        isEmpty() {
+            return this.size() === 0
+        }
+
+        // 向双端队列的前端添加元素
+        // 三种场景：①双端队列为空；②一个元素已被从双端队列的前端移除（lowestCount>=1）；③lowestCount=0
+        addFront(element) {
+            if (this.isEmpty()) {
+                this.addBack(element)
+            } else if (this.lowestCount > 0) {
+                this.lowestCount--
+                this.items[this.lowestCount] = element
+            } else {
+                for (let i = this.count; i > 0; i--) {
+                    this.items[i] = this.items[i - 1]
+                }
+                this.count++
+                this.lowestCount = 0
+                this.items[0] = element
+            }
+
+        }
+
+        // 计算队列中的元素个数
+        size() {
+            return this.count - this.lowestCount
+        }
+
+        // 清空队列
+        clear() {
+            this.items = {}
+            this.count = 0
+            this.lowestCount = 0
+        }
+
+        // 创建toString方法
+        toString() {
+            if (this.isEmpty()) {
+                return ''
+            }
+            let objString = `${this.items[this.lowestCount]}`
+            for (let i = this.lowestCount + 1; i < this.count; i++) {
+                objString = `${objString},${this.items[i]}`
+            }
+            return objString
+        }
+    }
+
+    // 使用deque类
+
+    // 创建一个双端队列
+    const myDeque = new Deque()
+    // 检验其是否为空
+    console.log(myDeque.isEmpty())
+    // 添加一个元素
+    myDeque.addFront("ele1")
+    // 再添加一个
+    myDeque.addFront("ele2")
+    // 看看现在长啥样
+    console.log(myDeque.toString()) //ele2,ele1
+    // 看看现在有几个
+    console.log(myDeque.size())     //2
+    // 删掉最前面的一个
+    myDeque.removeFront()
+    // 看看现在长啥样
+    console.log(myDeque.toString()) //ele1
+    // 检验其是否为空
+    console.log(myDeque.isEmpty())  //false
+    // 删掉最后面的一个
+    myDeque.removeBack()
+    // 看看现在长啥样
+    console.log(myDeque.isEmpty())  //true
+
+
+
+</script>
+
+</html>

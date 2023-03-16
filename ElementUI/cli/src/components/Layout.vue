@@ -27,8 +27,17 @@
       <el-col :span="6">6</el-col>
       <el-col :span="6">6</el-col>
       <el-col :span="6">6</el-col>
-
     </el-row>
+
+
+    <!-- 通过制定 col 组件的 offset 属性可以指定分栏偏移的栏数 -->
+    <el-row type="flex" justify="center">
+      <el-col :span="6" :offset="1">6</el-col>
+      <el-col :span="6">6</el-col>
+      <el-col :span="6">6</el-col>
+    </el-row>
+
+    
 
 
   </div>
